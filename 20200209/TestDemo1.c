@@ -36,18 +36,7 @@ int main()
 	
 	score[i] = newScore;
 	scoreCount++;
-	/*for(i = scoreCount - 1; i > 0; i--)
-	{
-		if(score[i] != oldScore)
-		{
-			score[i + 1] = score[i];
-		} else
-		{
-			score[i + 1] = score[i];
-			score[i] = newScore;
-		}
-	}
-	scoreCount++;*/
+	
 	for(i = 0; i < scoreCount; i++)
 	{
 		printf("%d ",score[i]);
