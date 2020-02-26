@@ -26,11 +26,17 @@ void inputPoints(POINT *list) {
 		if (list->next == NULL) {
 			list->next = p;
 		}
+		else {
+			tail->next = p;
+		}
+		tail = p;
+		printf("请输入点坐标（横纵坐标为0时结束）\n")
 	}
 }
 
 int main() {
 	POINT list1 = { 0 };
 
-
+	inputPoints(&list1);
+	printf("结果为\n");
 }
