@@ -68,7 +68,9 @@ POINT *searchPrePoint(POINT list, POINT point) {
 	POINT *p;
 	POINT *pre = NULL;
 
-	for (p = list.next; p && !(p->row == point.row && p->col == point.col); p = p->next) {
+	for (p = list.next; 
+	p && !(p->row == point.row && p->col == point.col);
+	 p = p->next) {
 		pre = p;
 	}
 
