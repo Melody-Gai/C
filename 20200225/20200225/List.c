@@ -69,9 +69,7 @@ POINT *searchPrePoint(POINT list, POINT point) {
 	POINT *p;
 	POINT *pre = NULL;
 
-	for (p = list.next;
-		p && (p->row == point.row && p->col == point.col);
-		p->next) {
+	for (p = list.next; p && !(p->row == point.row && p->col == point.col); p = p->next) {
 		pre = p;
 	}
 
@@ -97,9 +95,8 @@ void insertPoint(POINT *list) {
 	printf("请输入你要插入的位置（前插入）：\n");
 	scanf("%d%d", &oldRow, &oldCol);
 	oldPoint.row = oldRow;
-	oldPoint.row = oldCol;
+	oldPoint.col = oldCol;
 	prePoint = searchPrePoint(*list, oldPoint);
-
 	if (prePoint == NULL) {
 		prePoint = list;
 	}
@@ -169,10 +166,19 @@ int main() {
 	printf("删除的结果如下：\n");
 	showAllPoints(list1);
 	printf("排序的结果如下：\n");
-	sortPoints(list1);
+	sortPoints(&list1);
 	showAllPoints(list1);
 
 	destoryList(&list1);
 
-	reutrn 0;
+	return 0;
 }
+/*
+1 3
+2 6
+5 7
+2 8
+7 3
+8 4
+9 0
+*/
