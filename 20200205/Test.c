@@ -14,6 +14,6 @@ int main()
 	i = 3;
 	printf("%d %d\n", j = (++i) + (++i) + (++i), i);
 	printf("i=%d\n", i);
-
+	system("pause");
 	return 0;
 } 
