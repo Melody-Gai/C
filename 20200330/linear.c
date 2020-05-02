@@ -2,6 +2,8 @@
 
 #define MAXSIZE 100
 
+#define OK 1
+#define ERROR 0
 #define TRUE 1
 #define FALSE 0
 
@@ -24,7 +26,23 @@ void ListDelete(SeqList *L,int i);//删除线性表中的第i个元素
 boolean ListEmpty(SeqList L);//判断顺序表是否为空，为空返回false，不为空返回true???
 void ClearList(SeqList *L);//清空顺序表
 void DestroryList(SeqList L);
+void union_SeqList(SeqList *A,SeqList B);//将所有的在线性表B中但不在A中的数据元素插入到A中
 
+void union_SeqList(SeqList *A,SeqList B)
+{
+	int A_len,B_len,i;
+	ElemType e;
+	A_len = ListLength(A);
+	B_len = ListLength(B);
+	for (int i = 0; i < B_len; ++i)
+	{
+		GetElem(B,i,e);
+		if(!LocationElem(A,e))
+		{
+			ListInsert(A,++A_len,e);
+		}
+	}
+}
 
 void DestroryList(SeqList L){
 
@@ -60,15 +78,22 @@ void ListDelete(SeqList *L,int i){
 void ListInsert(SeqList *L,int i,ElemType x) {
 	int j;
 
-	if(L->length == MAXSIZE - 1) {
-		printf("顺序表已满，不能插入");
-	}else{
-		for (int j = L->length - 1/*???*/; j >= i; --j) {
+	if(L->length == MAXSIZE) {
+		printf("顺序表已满，不能插入\n");
+	}
+	if(i < 1 || L->length + 1)
+	{
+		printf("i不在范围内\n");
+	}
+	if(i <= L->length) 
+	{
+		for (int j = L->length - 1; j >= i - 1; --j) {
 			L->elem[j + 1] = L->elem[j];
 		}
-		elem[i] = x;
-		L->length ++;
 	}
+	L->elem[i - 1] = x;
+	L->length ++;
+	return OK;
 	
 	return L;
 }
@@ -95,7 +120,12 @@ int LocationElem(SeqList L,int x){
 }
 
 void GetElem (SeqList L, int i, ElemType* x){
-	x = L.elem[i];
+	if(L.length == 0 || i < 1 || i > L.length)
+	{
+		return ERROR;
+	}
+	*x = L.elem[i];
+	return OK;
 	//GetElem(L, 3, &x);
 }
 
