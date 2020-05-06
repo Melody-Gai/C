@@ -94,7 +94,7 @@ void PrintPoly( PolyList HeadPtr )
 	{
 	  if ( p -> Coef < 0 )
 	    printf( "-" );
-	}
+	}0
 
     // 打印系数值 ...
     if ( p -> Exp == 0 ) // 处理常数项 ...
