@@ -45,7 +45,7 @@ BOOL CMySdiView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMySdiView 绘制
 
-void CMySdiView::OnDraw(CDC* /*pDC*/)
+void CMySdiView::OnDraw(CDC* pDC)
 {
 	CMySdiDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -53,6 +53,12 @@ void CMySdiView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+	CRect rectClient;
+	GetClientRect(rectClient);
+	CSize sizeClient=rectClient.Size(); 
+	CString str=pDoc->m_ str;
+	CSize sizeTextExtent = pDC ->GetTextExtent(str);
+	pDC->TexoOutW((sizeClient. cx-sizeTextExtent. cx)/2, (sizeClient. cy-sizeTextExtent. cy)/2, str); 
 }
 
 

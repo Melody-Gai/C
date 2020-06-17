@@ -5,6 +5,7 @@
 #include "MySdi.h"
 
 #include "MySdiDoc.h"
+#include "DlgInput.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -16,12 +17,14 @@
 IMPLEMENT_DYNCREATE(CMySdiDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CMySdiDoc, CDocument)
+	ON_COMMAND(ID_Menu, &CMySdiDoc::OnChangetext)
 END_MESSAGE_MAP()
 
 
 // CMySdiDoc 构造/析构
 
 CMySdiDoc::CMySdiDoc()
+: m_str(_T(""))
 {
 	// TODO: 在此添加一次性构造代码
 
@@ -52,10 +55,12 @@ void CMySdiDoc::Serialize(CArchive& ar)
 	if (ar.IsStoring())
 	{
 		// TODO: 在此添加存储代码
+		ar<<m_str;
 	}
 	else
 	{
 		// TODO: 在此添加加载代码
+		ar>>m_str;
 	}
 }
 
@@ -76,3 +81,14 @@ void CMySdiDoc::Dump(CDumpContext& dc) const
 
 
 // CMySdiDoc 命令
+
+void CMySdiDoc::OnChangetext()
+{
+	// TODO: 在此添加命令处理程序代码
+	DlgInput dlg;
+	if(dlg.DoModal() == IDOK)
+	{
+		m_str = dlg.m_input;
+		UpdataAllViews(NULL);
+	}
+}

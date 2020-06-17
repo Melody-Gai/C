@@ -119,7 +119,7 @@ BEGIN
         MENUITEM "打印预览(&V)",                    ID_FILE_PRINT_PREVIEW
         MENUITEM "打印设置(&R)...",                 ID_FILE_PRINT_SETUP
         MENUITEM SEPARATOR
-        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1
         MENUITEM SEPARATOR
         MENUITEM "退出(&X)",                      ID_APP_EXIT
     END
@@ -130,6 +130,7 @@ BEGIN
         MENUITEM "剪切(&T)\tCtrl+X",              ID_EDIT_CUT
         MENUITEM "复制(&C)\tCtrl+C",              ID_EDIT_COPY
         MENUITEM "粘贴(&P)\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "",                            ID_Menu
     END
     POPUP "视图(&V)"
     BEGIN
@@ -190,6 +191,7 @@ FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "确定",IDOK,205,161,50,14
     PUSHBUTTON      "取消",IDCANCEL,259,161,50,14
+    EDITTEXT        IDC_EDIT1,103,61,91,51,ES_AUTOHSCROLL
 END
 
 

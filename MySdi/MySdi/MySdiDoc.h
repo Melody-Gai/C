@@ -35,6 +35,9 @@ protected:
 // 生成的消息映射函数
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	CString m_str;
+	afx_msg void OnChangetext();
 };
 
 
